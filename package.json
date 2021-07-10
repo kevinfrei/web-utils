@@ -8,6 +8,7 @@
     "test": "jest --config jest.jsdom.js",
     "watch": "jest --config jest.jsdom.js --watch",
     "build": "rimraf lib && tsc -p tsconfig.json && minify -i lib",
+    "debug": "rimraf lib && tsc -p tsdebug.json",
     "prepare": "yarn run build",
     "postinstall": "husky install",
     "prepublishOnly": "yarn test && yarn run lint && pinst --disable",
