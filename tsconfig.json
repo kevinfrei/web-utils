@@ -23,5 +23,5 @@
     "noEmit": true,
     "outDir": "./lib"
   },
-  "include": ["src/*.tsx"]
+  "include": ["src/*.tsx", "src/*.ts"]
 }
