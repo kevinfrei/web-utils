@@ -1,4 +1,5 @@
 import { Type } from '@freik/core-utils';
+import React from 'react';
 
 const dockStyle = new Map<
   string,
@@ -13,33 +14,32 @@ const dockStyle = new Map<
 export type DockProps = {
   location: 'top' | 'bottom' | 'left' | 'right';
   style?: React.CSSProperties;
-  children?: JSX.Element | JSX.Element[] | string;
+  children?: JSX.Element | string | (JSX.Element | string)[];
 };
 
 const theStyle: React.CSSProperties = {
   display: 'flex',
-  justifyContent: 'flex-start',
   alignItems: 'stretch', // Maybe switch to center based on something?
+  alignContent: 'stretch',
+  flexBasis: 'auto', // '100%',
 };
 
 export function Dock({ location, style, children }: DockProps): JSX.Element {
   const mostChildren = Type.isArray(children)
     ? children.slice(0, children.length - 1)
     : [];
-  const lastChild = Type.isArray(children) ? (
-    children[children.length - 1]
-  ) : Type.isString(children) ? (
-    children
-  ) : (
-    <div />
-  );
+  const lastChild = Type.isArray(children)
+    ? children[children.length - 1]
+    : children;
+  const flexDirection = dockStyle.get(location)!;
   const divStyle = {
     ...theStyle,
-    flexDirection: dockStyle.get(location),
+    flexDirection,
+    justifyContent: flexDirection.indexOf('-') > 0 ? 'flex-end' : 'flex-start',
     ...style,
   };
   return (
-    <div style={divStyle}>
+    <div className={`Dock${location}`} style={divStyle}>
       {mostChildren}
       <div style={{ flexGrow: 1 }}>{lastChild}</div>
     </div>

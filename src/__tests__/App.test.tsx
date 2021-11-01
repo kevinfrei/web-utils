@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Dock } from '../Dock';
 import { Fill } from '../Fill';

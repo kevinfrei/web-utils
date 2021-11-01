@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type FillProps = {
   direction?:
     | 'vertical'
@@ -9,7 +11,7 @@ export type FillProps = {
     | 'column'
     | 'c';
   style?: React.CSSProperties;
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | string | (JSX.Element | string)[];
 };
 
 const baseStyle: React.CSSProperties = {
@@ -25,11 +27,15 @@ export function Fill({
 }: FillProps): JSX.Element {
   const divStyle = { ...baseStyle, ...style };
   if (which && (which[0] === 'v' || which[0] === 'c')) {
-    divStyle.flexDirection = 'column';
+    divStyle.flexDirection = 'row';
     divStyle.height = '100%';
   } else {
-    divStyle.flexDirection = 'row';
+    divStyle.flexDirection = 'column';
     divStyle.width = '100%';
   }
-  return <div style={divStyle}>{children}</div>;
+  return (
+    <div className={`Fill${which ?? 'undefined'}`} style={divStyle}>
+      {children}
+    </div>
+  );
 }
