@@ -13,13 +13,18 @@ const fullPageSize: React.CSSProperties = {
 
 export type FullPageProps = {
   style?: React.CSSProperties;
+  className?: string;
   children?: JSX.Element | string | (JSX.Element | string)[];
 };
 
-export function FullPage({ style, children }: FullPageProps): JSX.Element {
+export function FullPage({
+  style,
+  className,
+  children,
+}: FullPageProps): JSX.Element {
   const newStyle = { ...fullPageSize, ...style };
   return (
-    <div className="FullPage" style={newStyle}>
+    <div className={className || ''} style={newStyle}>
       {children}
     </div>
   );
