@@ -1,6 +1,6 @@
 {
   "name": "@freik/web-utils",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Kevin Frei's Web utilities",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -16,7 +16,7 @@
     "postinstall": "husky install",
     "prepublishOnly": "yarn test && yarn run lint && pinst --disable",
     "postpublish": "pinst --enable",
-    "format": "prettier --write \"src/**/*.ts\" \"*.md\" \"*.json\" \".vscode/*.json\"",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"*.md\" \"*.json\"",
     "lint": "yarn run eslint --fix --ext .ts src",
     "preversion": "yarn run lint",
     "version": "yarn run format && git add -A src",

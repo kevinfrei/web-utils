@@ -1,3 +1,5 @@
+import { RecoilValueReadOnly, useRecoilCallback } from 'recoil';
+
 import { MakeError, MakeLogger } from '@freik/core-utils';
 import {
   atom,
@@ -9,12 +11,10 @@ import {
   SetterOrUpdater,
   useRecoilState,
 } from 'recoil';
+import { BoolState, KeyEventType } from './Hooks.js';
 
 const log = MakeLogger('web-recoil-helpers');
 const err = MakeError('web-recoil-helpers-err');
-
-// [state, show (set true), hide (set false)]
-export type BoolState = [boolean, () => void, () => void];
 
 export type StatePair<T> = [T, SetterOrUpdater<T>];
 
@@ -105,10 +105,6 @@ export function getAtomValuesEffect(): void {
   }
 }
 
-export interface KeyEventType {
-  key: string;
-}
-
 type KeyboardHookType<T extends KeyEventType> = (
   cbIntfc: CallbackInterface,
 ) => (ev: T) => void;
@@ -130,4 +126,29 @@ export function keyboardHook<T extends KeyEventType>(
       lastHeard = time;
       set(filterState, (curVal) => (clear ? ev.key : curVal + ev.key));
     };
+}
+
+export type MyTransactionInterface = {
+  get: <T>(recoilVal: RecoilState<T> | RecoilValueReadOnly<T>) => T;
+  set: <T>(
+    recoilVal: RecoilState<T>,
+    valOrUpdater: ((currVal: T) => T) | T,
+  ) => void;
+  reset: <T>(recoilVal: RecoilState<T>) => void;
+};
+
+type FnType<Args extends readonly unknown[], Return> = (
+  ...args: Args
+) => Return;
+
+// I'm making my own hook to use instead of the currently-too-constrained
+// useRecoilTransaction hook
+export function useMyTransaction<Args extends readonly unknown[], Return>(
+  fn: (ntrface: MyTransactionInterface) => FnType<Args, Return>,
+): FnType<Args, Return> {
+  return useRecoilCallback(({ set, reset, snapshot }) => {
+    const get = <T>(recoilVal: RecoilState<T> | RecoilValueReadOnly<T>) =>
+      snapshot.getLoadable(recoilVal).getValue();
+    return fn({ set, reset, get });
+  });
 }
