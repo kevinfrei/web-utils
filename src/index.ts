@@ -1,15 +1,11 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import type {
-  ConfirmationDialogProps,
-  TextInputProps as tip,
-} from './Dialogs.js';
-import { ConfirmationDialog, TextInput as ti } from './Dialogs.js';
 import type { DockProps as dP } from './Dock.js';
 import { Dock as localDock } from './Dock.js';
 import type { FillProps as fillP } from './Fill.js';
 import { Fill as localFill } from './Fill.js';
 import type { FullPageProps as fpP } from './FullPage.js';
 import { FullPage as localFP } from './FullPage.js';
+
+export * as Dialogs from './Dialogs.js';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Layout {
@@ -22,12 +18,6 @@ export namespace Layout {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
-export namespace Dialogs {
-  export type ConfirmationProps = ConfirmationDialogProps;
-  export type TextInputProps = tip;
-  export const Confirmation = ConfirmationDialog;
-  export const TextInput = ti;
-}
 
 export * from './FluentHelp.js';
 export * from './Helpers.js';
