@@ -108,13 +108,16 @@ export function Expandable({
   defaultShow,
   separator,
   variant,
+  indent,
 }: {
   children: JSX.Element | JSX.Element[];
   label: string | JSX.Element;
   defaultShow?: boolean;
   separator?: boolean;
   variant?: keyof IFontStyles;
+  indent?: number;
 }): JSX.Element {
+  const indentSize = indent || 0;
   const [hidden, setHidden] = useState(!defaultShow);
   const button = (
     <IconButton
@@ -150,6 +153,19 @@ export function Expandable({
         {button}
         {Type.isString(label) ? <Text variant={v}>{label}</Text> : label}
       </Stack>
+    );
+  }
+  if (indentSize !== 0) {
+    return (
+      <>
+        {theHeader}
+        <div style={hidden ? { display: 'none' } : {}}>
+          <Stack horizontal>
+            <span style={{ width: indentSize }} />
+            <div>{children}</div>
+          </Stack>
+        </div>
+      </>
     );
   }
   return (
