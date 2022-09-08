@@ -13,6 +13,7 @@ export * as Dialogs from './Dialogs.js';
 export * from './FluentHelp.js';
 export * from './Helpers.js';
 export * from './Hooks.js';
+export * from './ReactHelp.js';
 export * from './RecoilHelp.js';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
