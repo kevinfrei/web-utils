@@ -1,5 +1,5 @@
 import { Type } from '@freik/core-utils';
-import React from 'react';
+import React, { useState } from 'react';
 
 const msgsToUse = ['fetching from sources...', 'loading account...'];
 
@@ -38,4 +38,31 @@ export function TextRotater({
   );
 
   return <div>{msg[messageIndex]}</div>;
+}
+
+function randomize(message: string, char: string): string {
+  const pos = Math.random() * message.length;
+  return message.substring(0, pos) + char + message.substring(pos + 1);
+}
+
+export function Snark({
+  kind,
+  children,
+}: {
+  kind: string;
+  children: string;
+}): JSX.Element {
+  let char = '🙄';
+  switch (kind.toLocaleLowerCase()) {
+    case 'grumpy old man':
+    case 'back in my day':
+    case 'nostalgia':
+      char = '👴';
+      break;
+    default:
+      break;
+  }
+  const [val, setVal] = useState<string>(children);
+  useRecurringTimeout(500, () => setVal(randomize(children, char)), [children]);
+  return <>{val}</>;
 }
