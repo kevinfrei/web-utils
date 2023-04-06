@@ -13,10 +13,10 @@ import {
   Text,
   Toggle,
 } from '@fluentui/react';
-import { Type } from '@freik/core-utils';
 import { Suspense, useState } from 'react';
 import { CallbackInterface, RecoilState } from 'recoil';
 import { BoolState, KeyEventType } from './Hooks.js';
+import { isString } from '@freik/typechk';
 
 let lastHeard = performance.now();
 
@@ -136,7 +136,7 @@ export function Expandable({
     theHeader = (
       <Separator alignContent="start" styles={customStyle}>
         {button}
-        {Type.isString(label) ? (
+        {isString(label) ? (
           <Text variant={v}>
             &nbsp;
             {label}
@@ -151,7 +151,7 @@ export function Expandable({
     theHeader = (
       <Stack horizontal verticalAlign="center" style={{ marginTop: 10 }}>
         {button}
-        {Type.isString(label) ? <Text variant={v}>{label}</Text> : label}
+        {isString(label) ? <Text variant={v}>{label}</Text> : label}
       </Stack>
     );
   }

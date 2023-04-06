@@ -1,4 +1,4 @@
-import { Type } from '@freik/core-utils';
+import { isArray } from '@freik/typechk';
 import React from 'react';
 
 const dockStyle = new Map<
@@ -25,10 +25,10 @@ const theStyle: React.CSSProperties = {
 };
 
 export function Dock({ location, style, children }: DockProps): JSX.Element {
-  const mostChildren = Type.isArray(children)
+  const mostChildren = isArray(children)
     ? children.slice(0, children.length - 1)
     : [];
-  const lastChild = Type.isArray(children)
+  const lastChild = isArray(children)
     ? children[children.length - 1]
     : children;
   const flexDirection = dockStyle.get(location)!;

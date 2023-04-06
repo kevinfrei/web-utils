@@ -1,5 +1,5 @@
-import { Type } from '@freik/core-utils';
 import React from 'react';
+import { hasField, hasStrField } from '@freik/typechk';
 
 export type CenterDirectionName = {
   direction?:
@@ -45,19 +45,19 @@ const baseStyle: React.CSSProperties = {
 export function Center(props: CenterProps): JSX.Element {
   const divStyle = { ...baseStyle, ...props.style };
   const h =
-    Type.has(props, 'horizontal') ||
-    Type.has(props, 'column') ||
-    Type.has(props, 'col') ||
-    Type.has(props, 'both') ||
-    (Type.hasStr(props, 'direction') &&
+    hasField(props, 'horizontal') ||
+    hasField(props, 'column') ||
+    hasField(props, 'col') ||
+    hasField(props, 'both') ||
+    (hasStrField(props, 'direction') &&
       (props.direction[0] === 'h' ||
         props.direction[0] === 'c' ||
         props.direction[0] === 'b'));
   const v =
-    Type.has(props, 'vertical') ||
-    Type.has(props, 'row') ||
-    Type.has(props, 'both') ||
-    (Type.hasStr(props, 'direction') &&
+    hasField(props, 'vertical') ||
+    hasField(props, 'row') ||
+    hasField(props, 'both') ||
+    (hasStrField(props, 'direction') &&
       (props.direction === 'hv' ||
         props.direction[0] === 'v' ||
         props.direction[0] === 'r' ||

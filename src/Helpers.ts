@@ -1,13 +1,14 @@
-import { MakeError, Type } from '@freik/core-utils';
+import { hasFieldType, isFunction, isString } from '@freik/typechk';
+import debugModule from 'debug';
 
-const err = MakeError('web-helpers-err');
+const err = debugModule('web-utils:Helpers');
 
 export function Fail(name?: string, message?: string): never {
   const e = new Error();
-  if (Type.isString(name)) {
+  if (isString(name)) {
     e.name = name;
   }
-  if (Type.isString(message)) {
+  if (isString(message)) {
     e.message = message;
   }
   throw e;
@@ -20,7 +21,7 @@ export function Catch(e: any, msg?: string): void {
   }
   if (e instanceof Error) {
     err(e);
-  } else if (Type.has(e, 'toString') && Type.isFunction(e.toString)) {
+  } else if (hasFieldType(e, 'toString', isFunction)) {
     err(e.toString());
   }
 }
@@ -28,7 +29,7 @@ export function Catch(e: any, msg?: string): void {
 // eslint-disable-next-line
 export function onRejected(msg?: string): (reason: any) => void {
   return (reason: unknown) => {
-    if (Type.isString(msg)) {
+    if (isString(msg)) {
       err(msg);
     }
     err(reason);

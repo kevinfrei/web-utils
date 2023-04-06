@@ -55,6 +55,7 @@
     "@fluentui/react-hooks": "^8.6.20",
     "@freik/build-tools": "^3.5.0",
     "@freik/core-utils": "^1.4.5",
+    "@types/debug": "^4.1.7",
     "@types/jest": "^29.5.0",
     "@types/react": "^17.0.56",
     "@types/react-dom": "^17.0.19",
@@ -86,5 +87,9 @@
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.5.0",
+  "dependencies": {
+    "@freik/typechk": "^0.1.0",
+    "debug": "^4.3.4"
+  }
 }
