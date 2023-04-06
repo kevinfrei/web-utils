@@ -1,6 +1,5 @@
 import { RecoilValueReadOnly, useRecoilCallback } from 'recoil';
-
-import { MakeError, MakeLogger } from '@freik/core-utils';
+import debugModule from 'debug';
 import {
   atom,
   CallbackInterface,
@@ -13,8 +12,8 @@ import {
 } from 'recoil';
 import { BoolState, KeyEventType } from './Hooks.js';
 
-const log = MakeLogger('web-recoil-helpers');
-const err = MakeError('web-recoil-helpers-err');
+const log = debugModule('web-utils:recoil-helpers');
+const err = debugModule('web-utils:recoil-helpers:err');
 
 export type StatePair<T> = [T, SetterOrUpdater<T>];
 

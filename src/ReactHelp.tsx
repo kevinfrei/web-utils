@@ -1,4 +1,4 @@
-import { Type } from '@freik/core-utils';
+import { isNumber } from '@freik/typechk';
 import React, { useState } from 'react';
 
 const msgsToUse = ['fetching from sources...', 'loading account...'];
@@ -26,7 +26,7 @@ export function TextRotater({
 }: TextRotaterProps): JSX.Element {
   // Default to the first message passed
   const msg = messages || msgsToUse;
-  const tm = Type.isNumber(every) && every > 0 ? every : 1000;
+  const tm = isNumber(every) && every > 0 ? every : 1000;
   const msgLen: number = msg.length;
   const [messageIndex, setMessageIndex] = React.useState(0);
   useRecurringTimeout(

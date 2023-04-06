@@ -2,7 +2,7 @@ import { hasFieldType, isFunction, isString } from '@freik/typechk';
 import debugModule from 'debug';
 
 const err = debugModule('web-utils:Helpers');
-q
+
 export function Fail(name?: string, message?: string): never {
   const e = new Error();
   if (isString(name)) {
