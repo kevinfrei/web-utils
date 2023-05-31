@@ -11,6 +11,7 @@ import { FullPage as localFP } from './FullPage.js';
 export * as Dialogs from './Dialogs.js';
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export * from './FluentHelp.js';
+export * from './FluentUIHelp.js';
 export * from './Helpers.js';
 export * from './Hooks.js';
 export * from './ReactHelp.js';

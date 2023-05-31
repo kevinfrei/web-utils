@@ -1,6 +1,6 @@
 {
   "name": "@freik/web-utils",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Kevin Frei's Web utilities",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -34,6 +34,7 @@
   "homepage": "https://github.com/kevinfrei/web-utils#readme",
   "peerDependencies": {
     "@fluentui/react": ">=8.50.0",
+    "@fluentui/react-components": ">=9.21.0",
     "@fluentui/react-hooks": ">=8.1.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0",
@@ -41,6 +42,9 @@
   },
   "peerDependenciesMeta": {
     "@fluentui/react": {
+      "optional": true
+    },
+    "@fluentui/react-components": {
       "optional": true
     },
     "@fluentui/react-hooks": {
@@ -51,17 +55,18 @@
     }
   },
   "devDependencies": {
-    "@fluentui/react": "^8.107.2",
-    "@fluentui/react-hooks": "^8.6.20",
+    "@fluentui/react": "^8.109.9",
+    "@fluentui/react-components": "^9.21.0",
+    "@fluentui/react-hooks": "^8.6.26",
     "@freik/build-tools": "^3.5.0",
-    "@types/debug": "^4.1.7",
-    "@types/jest": "^29.5.0",
-    "@types/react": "^17.0.56",
-    "@types/react-dom": "^17.0.19",
+    "@types/debug": "^4.1.8",
+    "@types/jest": "^29.5.2",
+    "@types/react": "^17.0.60",
+    "@types/react-dom": "^17.0.20",
     "@types/react-test-renderer": "^17.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.57.1",
-    "@typescript-eslint/parser": "^5.57.1",
-    "eslint": "^8.37.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
@@ -72,15 +77,15 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "pinst": "^3.0.0",
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^5.0.1",
     "react-test-renderer": "^17.0.2",
     "recoil": "^0.7.7",
-    "rimraf": "^4.4.1",
+    "rimraf": "^5.0.1",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.4"
   },
   "files": ["lib/**/*"],
   "engines": {

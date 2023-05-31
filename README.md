@@ -1,6 +1,7 @@
 # @freik/web-utils
 
-> Some simple utilities for www code.
+> Some simple controls & utilities for www code, including some helpers for
+> Microsoft's FluentUI components
 
 ## Fill
 
