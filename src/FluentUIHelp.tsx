@@ -8,15 +8,14 @@ export type SpinnerUIProps = SpinnerProps & {
 
 export function SpinSuspense(props: Partial<SpinnerUIProps>): JSX.Element {
   const children = hasField(props, 'children') ? props.children : <></>;
-  if (!hasField(props, 'label')) {
-    props.label = 'Please wait...';
-  }
-  if (!hasField(props, 'labelPosition')) {
-    props.labelPosition = 'below';
-  }
+  const theProps: SpinnerProps = {
+    label: 'Please wait...',
+    labelPosition: 'below',
+    ...props,
+  };
   const theSpinner = (
     <div className="mySpinner">
-      <Spinner {...props} />
+      <Spinner {...theProps} />
     </div>
   );
   return <Suspense fallback={theSpinner}>{children}</Suspense>;
