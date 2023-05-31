@@ -1,6 +1,6 @@
 {
   "name": "@freik/web-utils",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Kevin Frei's Web utilities",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",

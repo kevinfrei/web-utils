@@ -1,24 +1,23 @@
-import { Spinner as Spinner9, SpinnerProps } from '@fluentui/react-components';
+import { Spinner, SpinnerProps } from '@fluentui/react-components';
 import { hasField } from '@freik/typechk';
 import { Suspense } from 'react';
 
-export type SpinnerUIProps = Partial<SpinnerProps> & {
+export type SpinnerUIProps = SpinnerProps & {
   children: JSX.Element | JSX.Element[];
 };
 
-export function SpinSuspense(props: SpinnerUIProps): JSX.Element {
-  const spinProps: Partial<SpinnerProps> = props;
-  delete spinProps.children;
-  if (!hasField(spinProps, 'label')) {
-    spinProps.label = 'Please wait...';
+export function SpinSuspense(props: Partial<SpinnerUIProps>): JSX.Element {
+  const children = hasField(props, 'children') ? props.children : <></>;
+  if (!hasField(props, 'label')) {
+    props.label = 'Please wait...';
   }
-  if (!hasField(spinProps, 'labelPosition')) {
-    spinProps.labelPosition = 'below';
+  if (!hasField(props, 'labelPosition')) {
+    props.labelPosition = 'below';
   }
   const theSpinner = (
     <div className="mySpinner">
-      <Spinner9 {...spinProps} />
+      <Spinner {...props} />
     </div>
   );
-  return <Suspense fallback={theSpinner}>{props.children}</Suspense>;
+  return <Suspense fallback={theSpinner}>{children}</Suspense>;
 }
