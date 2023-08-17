@@ -1,22 +1,3 @@
 # @freik/web-utils
 
-> Some simple controls & utilities for www code, including some helpers for
-> Microsoft's FluentUI components
-
-## Fill
-
-```javascript
-<Fill direction="vertical">somethign</Fill>
-```
-
-## Dock
-
-```javascript
-<Dock location="bottom">something</Dock>
-```
-
-## FullPage
-
-```javascript
-<Fullpage>something</FullPage>
-```
+This has been moved to my [mono(ish) repo](https://github.com/kevinfrei/packages.git).
